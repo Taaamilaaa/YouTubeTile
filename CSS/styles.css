@@ -15,7 +15,6 @@ body {
 }
 
 h1,
-p,
 ul {
     margin: 0;
     padding: 0;
@@ -50,18 +49,13 @@ section {
     grid-row-gap: 1em;
 }
 .tile__list-item {
-    outline: black 1px solid;
+    margin: auto;
 }
 
-.video {
-    width: 100%;
-    height: 200px;
-    background-color: #fff;
-}
 @media screen and (min-width: 480px) {
     .container {
-            max-width: 440px;
-        }
+        max-width: 440px;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -87,9 +81,9 @@ section {
         margin-top: 50px;
         margin-bottom: 50px;
     }
-        .tile__list {
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-column-gap: 20px;
-            grid-row-gap: 20px;
-        }
+    .tile__list {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+    }
 }
