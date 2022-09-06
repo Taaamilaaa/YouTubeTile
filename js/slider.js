@@ -1,15 +1,14 @@
 import { videoPath } from './videoPath.js';
-import { addVideo } from './repos.js';
+import { addVideo, addImg } from './repos.js';
 
 $(document).ready(function () {
     $('.slider').slick({
         arrows: true,
         dots: true,
         adaptiveHeight: true,
-        // slidesToScroll: 3,
         speed: 1000,
         easing: 'ease',
-        infinite: true,
+        infinite: false,
         initialSlide: 0,
         autoplay: false,
         draggable: false,
@@ -21,15 +20,13 @@ $(document).ready(function () {
         variableWidth: false,
         mobileFirst: true,
         responsive: [
-        
             {
                 breakpoint: 768,
                 settings: {
                     slidesToShow: 2,
-                },                 
-            }
-           
-        ]
+                },
+            },
+        ],
     });
 });
 
@@ -40,16 +37,14 @@ slider.addEventListener('click', onClick);
 function onClick(e) {
     const ifr = slider.querySelector('iframe');
 
-    if (ifr && e.target.nodeName === 'IMG' ) {
-        videoPath.forEach(el => {
-            if (el.id === ifr.id) {
-                const img = ` <img src=${el.url} width="290"  alt = "plug" id=${el.id} />`;
-                ifr.parentNode.innerHTML = img;
-                el.url = ifr.src;
-            } 
-        });
+    if (ifr && e.target.nodeName === 'IMG') {
+        addImg(ifr);
         addVideo(e.target);
     } else if (e.target.parentNode.className.includes('slider__item')) {
         addVideo(e.target);
+    } else if (e.target.nodeName === 'BUTTON') {
+        if (ifr && !ifr.parentNode.className.includes('slick-active')) {
+            addImg(ifr);
+        }
     }
 }
